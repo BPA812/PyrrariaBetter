@@ -1,7 +1,6 @@
 import numpy as np
 from random import *
-pieces=[]
-anchor=20
+pieces,anchor=[],20
 for i in range(780):
     x=randint(-3,3)
     anchor+=x
@@ -19,7 +18,5 @@ for i in range(780):
             continue
     temp[50:,:]=2
     pieces.append(temp)
-print("HA")
 blocks=np.concatenate(pieces,axis=1)
 print(blocks)
-

@@ -3,17 +3,11 @@ from pygame import*
 from time import time as tm
 screen=display.set_mode((800,600))
 screen.fill((0,0,0))
-background=image.load("background.png").convert()
-clock=time.Clock()
-clockCount=0
-positive=True
-filler=0
-running=True
+positive,filler,running,clockCount,clock,background=True,0,True,0,time.Clock(),image.load("background.png").convert()
 while running:
     for evt in event.get():
         if evt.type==QUIT:
             running=False
-#-------------------------------------------------------
     clock.tick(60)
     if clockCount<255 and positive:
         clockCount+=1
@@ -29,6 +23,5 @@ while running:
     print(background.get_alpha())
     display.set_caption("dank example fps = {0:.0f}".format(clock.get_fps()))
     print((background.get_alpha()))
-#-------------------------------------------------------
     display.flip()
 quit()

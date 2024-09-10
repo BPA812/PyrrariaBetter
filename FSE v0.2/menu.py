@@ -7,7 +7,6 @@ pygame.init() #initializing sounds
 pygame.mixer.init()
 pygame.mixer.pre_init(22050,-16,2,2048)
 
-
 playerflag=bool(int (open("flag.txt","r").read())) #returns to menu
 screen=display.set_mode((1280,720))
 #////////////////////////////////////////////////////////////////
@@ -17,11 +16,7 @@ title=image.load("menuImages/title.png") #logo
 background=transform.scale(background,(1280,720))
 #/////////////////////////////////////////////////////////////////
 #Fonts
-andy58 = font.Font("fonts/HW ANDY.ttf",58)
-andy44 = font.Font("fonts/HW ANDY.ttf",44)
-andy18 = font.Font("fonts/HW ANDY.ttf", 18)
-andy16 = font.Font("fonts/HW ANDY.ttf", 16)
-
+andy18,andy16,andy44,andy58 = font.Font("fonts/HW ANDY.ttf", 18),font.Font("fonts/HW ANDY.ttf", 16),font.Font("fonts/HW ANDY.ttf",44),font.Font("fonts/HW ANDY.ttf",58)
 play = andy44.render("Play", True,(200,200,200)) #Boring text Loading
 play2 = andy58.render("Play", True,(255,255,0))
 world = andy44.render("World", True,(200,200,200))
@@ -39,29 +34,12 @@ playback2 = andy58.render("Play World",True,(255,255,0))
 settings = andy44.render("Settings", True, (200,200,200))
 settings2 = andy58.render("Settings", True, (255,255,0))
 leave = andy44.render("Exit",True,(200,200,200))
-leave2 = andy58.render("Exit",True,(255,255,0))
-back = andy44.render("Back",True,(200,200,200))
-back2 = andy58.render("Back",True,(255,255,0))
-
-volume = andy44.render("Volume",True,(200,200,200))
-
-text={"smaller"} 
-
-#////////////////////////////////////////////////////////////////
-file1="Audio/01-Menu.mp3" #Loading music using pygame.mixer
-
+volume,text,file1,back,back2,leave2 = andy44.render("Volume",True,(200,200,200)),{"smaller"},"Audio/01-Menu.mp3",andy44.render("Back",True,(200,200,200)),andy58.render("Back",True,(255,255,0)),andy58.render("Exit",True,(255,255,0))
 pygame.mixer.music.load(file1)
 pygame.mixer.music.play()
 END_MUSIC_EVENT=pygame.USEREVENT+0
 pygame.mixer.music.set_endevent(END_MUSIC_EVENT)
-#////////////////////////////////////////////////////////////////
-tempClock=time.Clock() #for day/night cycle
-tempCount=0 #keeps track of alpha
-positive=True #up or down
-optionsMenu=False #boolean variables to indicate location in meny
-screening=True
-playSelect = False
-worldSelect = False
+playSelect,worldSelect,screening,optionsMenu,positive,tempCount,tempClock = False,False,True,False,True,0,time.Clock()
 menu=True
 ###################################################################
 while screening: # if this is false, the game is playing
